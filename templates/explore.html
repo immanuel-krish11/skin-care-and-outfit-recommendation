@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Analysis</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600&display=swap">
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #faf3f0; /* Warm ivory base */
+            color: #5a4a42; /* Soft brown text */
+        }
+        
+        /* Hero Section with Luxe Marble Background */
+        .hero-container {
+            background-image: 
+                linear-gradient(rgba(0, 0, 0, 0.1), 
+                url('https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'));
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            background: rgba(255, 255, 255, 0.7);
+            color: #5a4a42;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(-3px);
+        }
+        
+        /* Content Styling */
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            color: #3d2f2f; /* Deep taupe */
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: #5a4a42; /* Muted brown */
+        }
+        
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .option-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            text-align: center;
+            text-decoration: none;
+            color: #5a4a42;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .option-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            display: inline-block;
+            color: #d4a59a; /* Blush pink */
+        }
+        
+        .option-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: #3d2f2f;
+        }
+        
+        .option-card p {
+            opacity: 0.8;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .back-button {
+                top: 15px;
+                left: 15px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="/" class="back-button">
+        ← Back
+    </a>
+    
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>Your Luxury Skin Experience</h1>
+            <p class="subtitle">Indulge in personalized skincare tailored to your desires</p>
+            
+            <div class="options-grid">
+                <!-- Option 1 -->
+                <a href="{{ url_for('analysis') }}" class="option-card">
+                    <div class="option-icon">🔍</div>
+                    <h3 class="option-title">In-Depth Analysis</h3>
+                    <p>Complete skin evaluation with AI-powered diagnostics for your unique needs.</p>
+                </a>
+                
+                <!-- Option 2 -->
+                <a href="{{url_for('outfit')}}" class="option-card">
+                    <div class="option-icon">👕</div>
+                    <h3 class="option-title">Outfit Recommendation</h3>
+                    <p>Get skincare products that perfectly complement your wardrobe colors.</p>
+                </a>
+                
+                <!-- Option 3 -->
+                <a href="products.html" class="option-card">
+                    <div class="option-icon">🌿</div>
+                    <h3 class="option-title">Know Our Products</h3>
+                    <p>Products aligned with our daily skin-care routine and recommendations.</p>
+                </a>
+                <!-- Option 4 - About Us -->
+                <a href="{{ url_for('about') }}" class="option-card">
+                    <div class="option-icon">✨</div>
+                    <h3 class="option-title">About Us</h3>
+                    <p>Discover our philosophy, experts, and commitment to your skin's radiance.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

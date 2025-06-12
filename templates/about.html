@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | LuxeSkin AI</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@300;400;500&display=swap">
+    <style>
+        :root {
+            --ivory: #F8F4E9;
+            --taupe: #7A6A5F;
+            --gold: #C4A77D;
+            --rose: #D8B4A0;
+            --slate: #3A4A4F;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--ivory);
+            color: var(--slate);
+            line-height: 1.8;
+        }
+
+        /* Luxury Hero Section */
+        .luxury-hero {
+            background: 
+                linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 100%),
+                url('https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            background: rgba(248, 244, 233, 0.88);
+            backdrop-filter: blur(4px);
+            padding: 4rem;
+            max-width: 800px;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--taupe);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Gold Accent Line */
+        .accent-line {
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+            margin: 1.5rem auto;
+        }
+
+        /* Content Sections */
+        .luxury-container {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+        }
+
+        .luxury-section {
+            margin: 5rem 0;
+            position: relative;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--taupe);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* Team Grid */
+        .luxury-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 2px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            text-align: center;
+            border-top: 3px solid var(--gold);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .member-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 2px solid var(--ivory);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Model Cards */
+        .model-card {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            border-left: 3px solid var(--gold);
+            position: relative;
+        }
+
+        .model-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(248,244,233,0) 0%, rgba(248,244,233,1) 100%);
+            pointer-events: none;
+        }
+
+        .model-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--taupe);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Back Button */
+        .luxury-back {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: rgba(248, 244, 233, 0.9);
+            color: var(--taupe);
+            border: 1px solid var(--gold);
+            padding: 12px 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .luxury-back:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-overlay {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .luxury-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="{{url_for('explore')}}" class="luxury-back">← Back</a>
+    
+    <!-- Hero with Parallax Background -->
+    <section class="luxury-hero">
+        <div class="hero-overlay">
+            <h1>Our Philosophy</h1>
+            <div class="accent-line"></div>
+            <p>Where artificial intelligence meets excellence</p>
+        </div>
+    </section>
+    
+    <div class="luxury-container">
+        <!-- Team Section -->
+        <section class="luxury-section">
+            <h2>The Creators</h2>
+            <!-- <p>A fusion of dermatological expertise and AI innovation</p> -->
+            
+            <div class="luxury-grid">
+                <div class="team-card">
+                    <img src="" alt="" class="member-photo">
+                    <h3>Krish</h3>
+                    <p>The GOAT</p>
+                    <p class="bio">AI/ML Expert | Full-stack Developer</p>
+                </div>
+                
+                <div class="team-card">
+                    <img src="" alt="" class="member-photo">
+                    <h3>Member 2</h3>
+                    <p>AI Architect</p>
+                    <p class="bio">BIO</p>
+                </div>
+                
+                <div class="team-card">
+                    <img src="" alt="" class="member-photo">
+                    <h3>Member 3</h3>
+                    <p>Productt</p>
+                    <p class="bio">BIO</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Technology Section -->
+        <section class="luxury-section">
+            <h2>Our Technology</h2>
+            <p>Proprietary algorithms powered by:</p>
+            
+            <div class="model-card">
+                <div class="model-name">Skin Tone Matrix</div>
+                <p>10-layer CNN trained on 100,000+ ethnically diverse facial images with Monk Skin Tone annotations</p>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-name">Skin Texture Analysis</div>
+                <p>Transfer learning with EfficientNetV2 on dermatologist-labeled datasets</p>
+            </div>
+            
+            <div class="model-card">
+                <div class="model-name">Product Recommender</div>
+                <p>Graph neural network analyzing 50,000+ user outcomes</p>
+            </div>
+        </section>
+        
+        <!-- Data Section -->
+        <section class="luxury-section">
+            <h2>Data Excellence</h2>
+            <p>Clinically validated datasets featuring:</p>
+            <ul style="list-style-type: none; padding: 0;">
+                <li>✓ 50,000+ high-resolution facial images</li>
+                <li>✓ 10,000+ hours of dermatologist annotations</li>
+                <li>✓ Longitudinal studies across 15 countries</li>
+                <li>✓ 98.7% user satisfaction in clinical trials</li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>

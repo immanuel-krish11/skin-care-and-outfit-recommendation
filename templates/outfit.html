@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Glow | Outfit Recommendations</title>
+    <style>
+        :root {
+            --gold: #FFD700;
+            --ivory: #FFFFF0;
+            --onyx: #353839;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #f9f7f1;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .luxury-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        
+        .header {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gold);
+            margin-bottom: 2rem;
+        }
+        /* Back Button */
+        .back-button {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            background: rgba(255, 255, 255, 0.7);
+            color: #5a4a42;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(-3px);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--onyx);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            border-color: #999;
+        }
+        
+        .upload-icon {
+            font-size: 50px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .upload-btn {
+            background: #4a4a4a;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        .upload-btn:hover {
+            background: #333;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .preview {
+            max-width: 300px;
+            max-height: 300px;
+            margin: 20px auto;
+            border-radius: 8px;
+            display: none;
+        }
+        .skin-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .skin-sample {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            box-shadow :0 5px 15px rgba(0,0,0,0.1);
+            background-color: var(hex_color);
+        }
+        
+        .skin-info {
+            margin-left: 2rem;
+        }
+        
+        .skin-info h3 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--onyx);
+        }
+        
+        .skin-info p {
+            font-style: italic;
+            color: #666;
+        }
+        
+        .palette-section {
+            margin: 3rem 0;
+        }
+        
+        .palette-title {
+            font-size: 1.8rem;
+            color: var(--onyx);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .color-palette {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .color-card {
+            width: 180px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-swatch {
+            height: 120px;
+            border-radius: 8px;
+            background-color: var(--color);
+            border: 1px solid #eee;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 0.8rem;
+        }
+        
+        .color-name {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: var(--onyx);
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+        }
+        
+        .luxury-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-family: inherit;
+        }
+        
+        .luxury-btn {
+            background: var(--onyx);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .luxury-btn:hover {
+            background: #222;
+        }
+        .luxury-tips {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            background: white;
+            padding: 1.8rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 2px solid #d4af37;
+        }
+        
+        .tip-line {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+        
+        .tip-line:first-child {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .tip-line:last-child {
+            font-size: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href=" {{url_for('explore')}} " class="back-button">
+        ← Back
+    </a>
+    <div class="luxury-container">
+        <div class="header">
+            <h1>Outfit Advisor</h1>
+            <p>Premium color combinations tailored to your skin tone</p>
+        </div>
+        <div class="container">
+            <h1>Upload Your Photo for Outfit Recommendations</h1>
+            
+            <form method="POST" enctype="multipart/form-data" id="upload-form">
+                <div class="upload-area">
+                    <div class="upload-icon">📷</div>
+                    <p>Upload a clear photo of yourself in natural lighting</p>
+                    <input type="file" id="file-input" class="file-input" name="photo" accept=".jpg,.jpeg" required>
+                    <label for="file-input" class="upload-btn">Choose Photo</label>
+                </div>
+                <img id="preview" class="preview">
+                <button type="submit" class="upload-btn" name="action" value="get_recommendations">Get Recommendations</button>
+            </form>
+            <script>
+                // Show image preview
+                document.getElementById('file-input').addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const preview = document.getElementById('preview');
+                        preview.src = URL.createObjectURL(file);
+                        preview.style.display = 'block';
+                    }
+                });
+                </script>
+        <div id="recommendations" style="display: none;">
+            <div class="luxury-tips">
+              <p class="tip-line">{{line}}</p>
+            </div>
+          </div>
+
+        {% if hex_color %}
+        <div class="skin-display">
+            <!-- <div class="skin-sample" style="background-color: {{hex_tone}};"></div> -->
+            <div class="skin-sample" ></div>
+
+            <div class="skin-info">
+                <h3>Your Skin Profile</h3>
+                <!-- <p>{{ brightness }} skin with {{ undertone }} undertones</p> -->
+            </div>
+        </div>
+        
+        {% for combo in combinations %}
+        <div class="palette-section">
+            <h2 class="palette-title">{{ combo.name }}</h2>
+            <div class="color-palette">
+                {% for color in combo.colors %}
+                <div class="color-card">
+                    <div class="color-swatch" style="--color: {{ color_db[color] }}"></div>
+                    <div class="color-name">{{ color }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        
+    </div>
+</body>
+</html>
