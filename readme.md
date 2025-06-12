@@ -24,12 +24,11 @@ ______________ This is the official documentation of Luxe-Glow project _________
    ```
 2. **Install Dependencies**
    ```
-   cd luxe-glow
-   npm install
+   /////yet to be added
    ```
 3. **Run the Application**
    ```
-   npm start
+   /////yet to be added 
    ```
 
 ---
@@ -40,12 +39,6 @@ We welcome contributions! Please fork the repository, create a new branch, and s
 
 ---
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
 ## Contact
 
-For questions or support, please contact [support@luxeglow.com](mailto:support@luxeglow.com).
+For questions or support, please contact my socials available on github.
